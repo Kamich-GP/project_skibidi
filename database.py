@@ -108,3 +108,5 @@ def make_order(user_id):
 def add_product(pr_name, pr_des, pr_count, pr_price, pr_photo):
     sql.execute('INSERT INTO products (pr_name, pr_des, pr_count, pr_price, pr_photo) '
                 'VALUES (?, ?, ?, ?, ?);', (pr_name, pr_des, pr_count, pr_price, pr_photo))
+    # Фиксируем изменения
+    connection.commit()

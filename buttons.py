@@ -29,9 +29,26 @@ def main_menu(products):
     return kb
 
 
+def choose_pr_count(pr_amount, plus_or_minus='', amount=1):
+    # Создаем пространство
+    kb = types.InlineKeyboardMarkup(row_width=3)
+    # Создаем сами кнопки
+    minus = types.InlineKeyboardButton(text='-', callback_data='decrement')
+    plus = types.InlineKeyboardButton(text='+', callback_data='increment')
+    count = types.InlineKeyboardButton(text=str(amount), callback_data='ignore')
+    to_cart = types.InlineKeyboardButton(text='Добавить в корзину🛒', callback_data='to_cart')
+    back = types.InlineKeyboardButton(text='Назад🔙', callback_data='back')
 
+    # Алгоритм изменения количества
+    if plus_or_minus == 'increment':
+        if amount <= pr_amount:
+            count = types.InlineKeyboardButton(text=str(amount + 1), callback_data='ignore')
+    elif plus_or_minus == 'decrement':
+        if amount > 1:
+            count = types.InlineKeyboardButton(text=str(amount - 1), callback_data='ignore')
 
+    # Добавляем кнопки в пространство
+    kb.add(minus, count, plus)
+    kb.row(back, to_cart)
 
-
-
-
+    return kb
