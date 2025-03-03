@@ -52,3 +52,31 @@ def choose_pr_count(pr_amount, plus_or_minus='', amount=1):
     kb.row(back, to_cart)
 
     return kb
+
+
+# Кнопки корзины
+def cart_buttons():
+    # Создаем пространство
+    kb = types.InlineKeyboardMarkup(row_width=2)
+    # Создаем сами кнопки
+    order = types.InlineKeyboardButton(text='Оформить заказ🛒', callback_data='order')
+    clear = types.InlineKeyboardButton(text='Очистить корзину🗑️', callback_data='clear')
+    back = types.InlineKeyboardButton(text='Назад🔙', callback_data='back')
+    # Добавляем кнопки в пространство
+    kb.add(order, clear)
+    kb.row(back)
+
+    return kb
+
+
+
+# Кнопка локации
+def loc_buttons():
+    # Создаем пространство
+    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    # Создаем сами кнопки
+    but1 = types.KeyboardButton('Отправить локацию📍', request_location=True)
+    # Добавляем кнопки в пространство
+    kb.add(but1)
+
+    return kb

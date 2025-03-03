@@ -78,13 +78,13 @@ def clear_cart(user_id):
 
 # Отображение корзины
 def show_cart(user_id):
-    sql.execute('SELECT * FROM cart WHERE user_id=?;', (user_id,)).fetchall()
+    return sql.execute('SELECT * FROM cart WHERE user_id=?;', (user_id,)).fetchall()
 
 
 
 # Оформление
 def make_order(user_id):
-    user_products = sql.execute('SELECT user_product FROM cart WHERE user_id=?;', (user_id,)).fetchall()
+    user_products = sql.execute('SELECT user_pr FROM cart WHERE user_id=?;', (user_id,)).fetchall()
     user_pr_counts = sql.execute('SELECT user_pr_count FROM cart WHERE user_id=?;', (user_id,)).fetchall()
 
     stock_quantity = [sql.execute('SELECT pr_count FROM products WHERE pr_name=?;', (p[0],)).fetchone()[0]
