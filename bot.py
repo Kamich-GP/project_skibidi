@@ -5,7 +5,7 @@ import database
 
 
 # Создаем объект бота
-bot = telebot.TeleBot('TOKEN')
+bot = telebot.TeleBot('7784023902:AAGTytiLgZJAVatKsGBHCYtRVGwdcLaNPM8')
 # Временные данные
 users = {}
 
